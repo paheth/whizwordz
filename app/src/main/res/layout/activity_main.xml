@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+	<!-- Transcribe selector -->
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginBottom="8dp">
+		
+		<ToggleButton
+			android:id="@+id/toggleTranscribe"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:textOn="Transcribe ON"
+			android:textOff="Transcribe OFF" />
+
+		<Spinner
+			android:id="@+id/spinnerModel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:entries="@array/model_list"
+			android:layout_marginStart="8dp"/>
+	</LinearLayout>
+
+    <!-- TTS input field -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editTextTts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter text to speak"
+            android:text="lets play a game"
+            android:padding="12dp"
+            android:background="@android:drawable/edit_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/buttonTts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔊 Speak &amp; Record"
+            android:layout_gravity="end|center_vertical"
+            android:padding="8dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:textColor="@android:color/white" />
+    </FrameLayout>
+
+    <!-- Gain control -->
+    <TextView
+        android:id="@+id/gainLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mic Gain: 20 dB"
+        android:layout_marginTop="16dp" />
+    <SeekBar
+        android:id="@+id/gainSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="30"
+        android:progress="20" />
+
+    <!-- Toggle buttons -->
+    <ToggleButton
+        android:id="@+id/toggleFullDuplex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="Full Duplex (ON)"
+        android:textOff="Full Duplex (OFF)"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+
+    <ToggleButton
+        android:id="@+id/togglePlayRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="Play+Record (ON)"
+        android:textOff="Play+Record (OFF)"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+
+    <ToggleButton
+        android:id="@+id/togglePlayLast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="Play Last (ON)"
+        android:textOff="Play Last (OFF)"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+
+    <!-- Status log -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp">
+        <TextView
+            android:id="@+id/statusTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+    </ScrollView>
+
+</LinearLayout>

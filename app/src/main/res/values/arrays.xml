@@ -1,0 +1,6 @@
+<resources>
+  <string-array name="model_list">
+    <item>distil-medium.en</item>
+    <item>distil-large-v3</item>
+  </string-array>
+</resources>
