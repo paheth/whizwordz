@@ -22,36 +22,6 @@ public:
     Engine() = default;
     ~Engine() { stopFullDuplex(); stopPlayRecord(); stopPlayback(); }
 
-    // Start transcription using faster-whisper model
-//    void startTranscription(const std::string& model) {
-//        std::lock_guard<std::mutex> lock(mutex_);
-//        if (transcribing_) return;
-//        // Initialize whisper context
-//        ctx_ = whisper_init(model.c_str());
-//        if (!ctx_) {
-//            __android_log_print(ANDROID_LOG_ERROR, TAG, "Failed to load model %s", model.c_str());
-//            return;
-//        }
-//        transcribing_ = true;
-//        // Launch transcription thread
-//        transcriptionThread_ = std::thread([this]() { this->transcribeLoop(); });
-//        __android_log_print(ANDROID_LOG_INFO, TAG, "Transcription started");
-//    }
-//
-//    void stopTranscription() {
-//        {
-//            std::lock_guard<std::mutex> lock(mutex_);
-//            if (!transcribing_) return;
-//            transcribing_ = false;
-//        }
-//        if (transcriptionThread_.joinable()) transcriptionThread_.join();
-//        if (ctx_) {
-//            whisper_free(ctx_);
-//            ctx_ = nullptr;
-//        }
-//        __android_log_print(ANDROID_LOG_INFO, TAG, "Transcription stopped");
-//    }
-
     void startFullDuplex(float gainDb) {
         std::lock_guard<std::mutex> lock(mutex_);
         gain_ = std::pow(10.0f, gainDb / 20.0f);
@@ -121,42 +91,6 @@ public:
 
 private:
     std::mutex mutex_;
-    bool transcribing_;
-    //whisper_context* ctx_;
-    //std::thread transcriptionThread_;
-
-//    void transcribeLoop() {
-//        // Open AAudio input stream
-//        AAudioStreamBuilder* builder;
-//        AAudio_createStreamBuilder(&builder);
-//        AAudioStreamBuilder_setDirection(builder, AAUDIO_DIRECTION_INPUT);
-//        AAudioStreamBuilder_setSampleRate(builder, kSampleRate);
-//        AAudioStreamBuilder_setChannelCount(builder, kChannelCount);
-//        AAudioStreamBuilder_setFormat(builder, AAUDIO_FORMAT_PCM_I16);
-//        AAudioStreamBuilder_setPerformanceMode(builder, AAUDIO_PERFORMANCE_MODE_LOW_LATENCY);
-//        AAudioStream* stream;
-//        AAudioStreamBuilder_openStream(builder, &stream);
-//        AAudioStreamBuilder_delete(builder);
-//        AAudioStream_requestStart(stream);
-//
-//        std::vector<int16_t> buffer(kFramesPerCallback);
-//        while (true) {
-//            {
-//                std::lock_guard<std::mutex> lock(mutex_);
-//                if (!transcribing_) break;
-//            }
-//            int64_t read = AAudioStream_read(stream, buffer.data(), (int32_t)buffer.size(), 0);
-//            if (read > 0) {
-//                // Feed into whisper
-//                whisper_full(ctx_, buffer.data(), read);
-//                // Retrieve transcription
-//                const char* text = whisper_get_text(ctx_);
-//                __android_log_print(ANDROID_LOG_INFO, TAG, "Transcribed: %s", text);
-//            }
-//        }
-//        AAudioStream_requestStop(stream);
-//        AAudioStream_close(stream);
-//    }
 
     AAudioStream* inStream_{};
     AAudioStream* outStream_{};

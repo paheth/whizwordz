@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter text to speak"
-            android:text="lets play a game"
+            android:text="Lets play Simon Says!"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
             android:textSize="16sp" />

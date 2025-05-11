@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         // TTS button action
         buttonTts.setOnClickListener {
-            val inputText = editTextTts.text.toString().takeIf { it.isNotBlank() } ?: "lets play a game"
+            val inputText = editTextTts.text.toString().takeIf { it.isNotBlank() } ?: "Let's play Simon Says!"
             synthesisAndRecord(inputText)
         }
 
