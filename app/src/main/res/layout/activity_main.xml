@@ -8,29 +8,6 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-	<!-- Transcribe selector -->
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		android:layout_marginBottom="8dp">
-		
-		<ToggleButton
-			android:id="@+id/toggleTranscribe"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:textOn="Transcribe ON"
-			android:textOff="Transcribe OFF" />
-
-		<Spinner
-			android:id="@+id/spinnerModel"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:entries="@array/model_list"
-			android:layout_marginStart="8dp"/>
-	</LinearLayout>
-
     <!-- TTS input field -->
     <FrameLayout
         android:layout_width="match_parent"
